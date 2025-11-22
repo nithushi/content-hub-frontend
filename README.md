@@ -39,6 +39,7 @@ Create a database named `content_hub`:
 
 ```sql
 CREATE DATABASE content_hub;
+```
 
 3. Backend Setup
 Navigate to the backend folder.
@@ -74,5 +75,10 @@ content-hub-frontend/
 │   └── ...
 👀 Screenshots
 1. Home Feed
-2. User Profile
-Made with ❤️ by [YNithushi Shavindi]
+<img width="768" height="1380" alt="screencapture-localhost-4200-2025-11-22-21_17_32" src="https://github.com/user-attachments/assets/5ffb9b94-d7d9-4fba-b311-1b635414048a" />
+
+3. Content Details
+<img width="768" height="2415" alt="screencapture-localhost-4200-post-3-2025-11-22-21_18_14" src="https://github.com/user-attachments/assets/e4a3a1f2-75a9-42ed-aa7e-3c0b5a3b2853" />
+
+   
+Made by [Nithushi Shavindi]
