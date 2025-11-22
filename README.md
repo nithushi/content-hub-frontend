@@ -6,7 +6,7 @@
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Used-336791?style=for-the-badge&logo=postgresql)
 ![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
 
-**Content Hub** is a sleek, full-stack social blogging application designed for creators to share thoughts and engage with readers. Built with **Angular 19** and a **Spring Boot** backend, using **PostgreSQL** for data storage.
+**Content Hub** is a sleek, full-stack social content sharing application designed for creators to share thoughts and engage with readers. Built with **Angular 19** and a **Spring Boot** backend, using **PostgreSQL** for data storage.
 
 ---
 
