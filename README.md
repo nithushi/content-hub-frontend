@@ -1,5 +1,5 @@
 # 📝 Content Hub
-### The Modern Social Blogging Platform
+### The Modern Social Content Platform
 
 ![Angular](https://img.shields.io/badge/Angular-19.2.19-dd0031?style=for-the-badge&logo=angular)
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.x-6db33f?style=for-the-badge&logo=springboot)
@@ -63,8 +63,7 @@ ng serve
 Visit: http://localhost:4200
 
 📂 Project Structure
-Bash
-
+```
 content-hub-frontend/
 ├── src/
 │   ├── app/
@@ -73,12 +72,14 @@ content-hub-frontend/
 │   │   ├── pages/        # Home, Login, Profile, Create-Post
 │   │   └── services/     # API Services
 │   └── ...
-👀 Screenshots
+
+```
+
+👀 Snips
 1. Home Feed
 <img width="768" height="1380" alt="screencapture-localhost-4200-2025-11-22-21_17_32" src="https://github.com/user-attachments/assets/5ffb9b94-d7d9-4fba-b311-1b635414048a" />
 
 3. Content Details
-<img width="768" height="2415" alt="screencapture-localhost-4200-post-3-2025-11-22-21_18_14" src="https://github.com/user-attachments/assets/e4a3a1f2-75a9-42ed-aa7e-3c0b5a3b2853" />
+<img width="768" height="1818" alt="screencapture-localhost-4200-post-2-2025-11-22-21_35_01" src="https://github.com/user-attachments/assets/77d88536-f547-47fe-81f5-96bfd8233485" />
 
-   
 Made by [Nithushi Shavindi]
