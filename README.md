@@ -1,59 +1,78 @@
-# BlogFrontend
+# 📝 Content Hub
+### The Modern Social Blogging Platform
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.19.
+![Angular](https://img.shields.io/badge/Angular-19.2.19-dd0031?style=for-the-badge&logo=angular)
+![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.x-6db33f?style=for-the-badge&logo=springboot)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Used-336791?style=for-the-badge&logo=postgresql)
+![License](https://img.shields.io/badge/License-MIT-blue?style=for-the-badge)
 
-## Development server
+**Content Hub** is a sleek, full-stack social blogging application designed for creators to share thoughts and engage with readers. Built with **Angular 19** and a **Spring Boot** backend, using **PostgreSQL** for data storage.
 
-To start a local development server, run:
+---
 
-```bash
+## ✨ Features
+
+### 🎨 Frontend (Angular 19)
+* **Standalone Components:** Modern architecture using the latest Angular standards.
+* **Reactive State:** Smooth UI updates using Observables.
+* **Secure Authentication:** JWT-based login/registration.
+* **Rich Interactions:** Create posts, comment threads, likes, and pinning.
+* **User Profiles:** Customizable profiles with avatars.
+
+### ⚙️ Backend (Spring Boot)
+* **RESTful API:** Efficient endpoints for content management.
+* **Database:** PostgreSQL.
+* **File Handling:** Optimized image storage.
+* **Security:** Role-based access control.
+
+---
+
+## 🚀 Getting Started
+
+### 1. Prerequisites
+* **Node.js** (v18+)
+* **Java JDK** (17 or 21)
+* **PostgreSQL**
+
+### 2. Database Setup
+Create a database named `content_hub`:
+
+```sql
+CREATE DATABASE content_hub;
+
+3. Backend Setup
+Navigate to the backend folder.
+
+Update application.properties with your PostgreSQL credentials.
+
+Run the application:
+
+Bash
+
+mvn spring-boot:run
+4. Frontend Setup
+Navigate to the frontend folder.
+
+Install dependencies and start the server:
+
+Bash
+
+npm install
 ng serve
-```
+Visit: http://localhost:4200
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+📂 Project Structure
+Bash
 
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
-
-```bash
-ng generate --help
-```
-
-## Building
-
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+content-hub-frontend/
+├── src/
+│   ├── app/
+│   │   ├── guards/       # Auth Guards
+│   │   ├── interceptors/ # Token Interceptor
+│   │   ├── pages/        # Home, Login, Profile, Create-Post
+│   │   └── services/     # API Services
+│   └── ...
+👀 Screenshots
+1. Home Feed
+2. User Profile
+Made with ❤️ by [YNithushi Shavindi]
