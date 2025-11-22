@@ -1,0 +1,940 @@
+.body{
+  font-family: 'Inter', system-ui, sans-serif; 
+}
+
+.post-detail-wrapper {
+  max-width: 800px;
+  /* Perfect width for reading */
+  margin: 0 auto;
+}
+
+/* --- 1. Image Header --- */
+.post-image-header {
+  width: 100%;
+  height: 400px;
+  /* Fixed height */
+  background-color: #f0f0f0;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-top: 2rem;
+}
+
+.post-image-header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- 2. Article --- */
+.post-article {
+  padding: 3rem 2rem;
+  background: #fff;
+}
+
+.post-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.2;
+}
+
+/* --- Author Meta --- */
+.post-meta {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 2.5rem;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.author-avatar-small {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: #111;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.author-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.author-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.post-date {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+/* --- 3. Content --- */
+.post-content {
+  /* This is key for a good reading experience */
+  font-family: "Poppins";
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #333;
+}
+
+.post-content p {
+  margin-bottom: 1.5rem;
+}
+
+/* --- 4. Comments Placeholder --- */
+.comment-section-placeholder {
+  background: #f9f9f9;
+  border: 1px dashed #ddd;
+  border-radius: 12px;
+  padding: 2rem;
+  text-align: center;
+  margin: 2rem;
+}
+
+.comment-section-placeholder h2 {
+  margin-top: 0;
+}
+
+/* --- 4. අලුත් Comment Section Styles --- */
+.comments-wrapper {
+  padding: 2rem;
+  margin: 2rem 0;
+  background: #fff;
+  border-top: 1px solid #eee;
+}
+
+.comments-wrapper h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111;
+  margin: 0 0 2rem 0;
+}
+
+/* Comment Form */
+.comment-form-container {
+  margin-bottom: 2rem;
+}
+
+.comment-form-container textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  outline: none;
+  font-size: 1rem;
+  font-family: inherit;
+  background: #f9f9f9;
+  resize: vertical;
+  min-height: 80px;
+  box-sizing: border-box;
+  /* Important */
+}
+
+.comment-form-container textarea:focus {
+  border-color: #000;
+  background: #fff;
+}
+
+.comment-form-container button {
+  background: #000;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  float: right;
+  transition: background-color 0.2s;
+}
+
+.comment-form-container button:hover {
+  background: #333;
+}
+
+.comment-form-container button:disabled {
+  background: #ccc;
+  cursor: not-allowed;
+}
+
+/* Comment List */
+.comments-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding-top: 1rem;
+  clear: both;
+  /* Button එක float කරපු නිසා */
+}
+
+.no-comments {
+  text-align: center;
+  padding: 2rem;
+  color: #777;
+}
+
+.comment-item {
+  display: flex;
+  gap: 12px;
+}
+
+.comment-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f0f0f0;
+  color: #555;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.comment-content {
+  flex: 1;
+  border: 1px solid #eee;
+  border-radius: 8px;
+  padding: 12px 15px;
+  background: #fcfcfc;
+}
+
+.comment-author {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #111;
+  margin-right: 8px;
+}
+
+.comment-date {
+  font-size: 0.8rem;
+  color: #999;
+}
+
+.comment-text {
+  font-size: 1rem;
+  color: #333;
+  margin: 0.5rem 0 0 0;
+  line-height: 1.6;
+}
+
+/* --- 5. අලුත් Like Button Styles --- */
+.post-actions {
+  margin-left: auto;
+  /* Like button එක දකුණු පැත්තට දානවා */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.like-btn {
+  background: #f0f0f0;
+  border: 1px solid #ddd;
+  color: #333;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  /* Like කරලා නැතිකොට heart icon එක B&W කරනවා */
+  filter: grayscale(100%);
+  opacity: 0.7;
+}
+
+.like-btn:hover {
+  background: #e0e0e0;
+  border-color: #ccc;
+  opacity: 1;
+}
+
+.like-btn.liked {
+  /* Like කරාම, B&W filter එක අයින් කරලා පාට දෙනවා */
+  filter: grayscale(0%);
+  opacity: 1;
+  background: #fee;
+  /* ලා රතු background */
+  border-color: #f88;
+  /* රතු border */
+  transform: scale(1.1);
+  /* පොඩි animation එකක් */
+}
+
+.like-count {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #555;
+}
+
+/* --- 6. අලුත් Comment Like Button Styles --- */
+.comment-actions {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.comment-like-btn {
+  background: transparent;
+  border: 1px solid #ddd;
+  color: #333;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  /* icon එක පොඩි කරනවා */
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  /* Like කරලා නැතිකොට heart icon එක B&W කරනවා */
+  filter: grayscale(100%);
+  opacity: 0.7;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.comment-like-btn:hover {
+  background: #f0f0f0;
+  opacity: 1;
+}
+
+.comment-like-btn.liked {
+  /* Like කරාම, B&W filter එක අයින් කරලා පාට දෙනවා */
+  filter: grayscale(0%);
+  opacity: 1;
+  border-color: #f88;
+  /* රතු border */
+}
+
+.comment-like-count {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #555;
+}
+
+/* --- NEW: Author Badge and Pin Styles --- */
+.comment-header {
+  /* Ensure space-between works */
+  justify-content: space-between;
+}
+
+.comment-author {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  /* Space between name and badge */
+}
+
+.author-badge {
+  background: #faa215;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.pinned-status {
+  font-size: 0.8rem;
+  color: #000;
+  font-weight: 600;
+  margin-right: 10px;
+  /* Visual separation */
+  padding-right: 10px;
+  border-right: 1px solid #ccc;
+}
+
+.comment-options {
+  /* Display options on the right */
+  margin-left: auto;
+  display: flex;
+  gap: 5px;
+}
+
+.pin-btn {
+  /* Style the pin button to look like a tool */
+  font-size: 1.1rem;
+}
+
+/* --- NEW: Pinned Comment Badge Style --- */
+.pinned-status {
+  /* badge එකක් වගේ පේන්න */
+  background: #000;
+  color: rgb(255, 255, 255);
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  /* පොඩි අකුරු */
+  font-weight: 600;
+  margin-right: 10px;
+  /* Date එකෙන් වෙන් වෙන්න */
+  margin-left: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-block;
+  /* හරියටම පෙනෙන්න */
+}
+
+/* --- Variables --- */
+:root {
+  --primary-color: #000000;
+  /* Black for primary actions/text */
+  --accent-color: #ff4500;
+  /* Orange-red for likes/emphasis */
+  --delete-color: #dc3545;
+  /* Red for delete actions */
+  --light-grey: #f5f5f5;
+  /* Light background for wrappers (e.g., comment form) */
+  --hover-bg: #e9ecef;
+  /* Very light grey for dropdown item hover */
+  --dark-text: #111;
+  --mid-grey: #777;
+  --border-color: #eee;
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+body {
+  font-family: 'Roboto', 'Inter', sans-serif;
+  color: var(--dark-text);
+  background-color: #f4f6f9;
+}
+
+/* --- Global Layout --- */
+.post-detail-wrapper {
+  max-width: 800px;
+  margin: 30px auto;
+  background-color: white;
+  box-shadow: var(--card-shadow);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* --- 1. Post Header & Article (Styles remain the same) --- */
+.post-image-header {
+  width: 100%;
+  max-height: 400px;
+  overflow: hidden;
+}
+
+.post-image-header img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.post-article {
+  padding: 3rem 2rem 2rem;
+}
+
+.post-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin: 0 0 1.5rem 0;
+  line-height: 1.2;
+}
+
+/* --- Author Meta Strip --- */
+.post-meta-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-bottom: 2.5rem;
+  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 2.5rem;
+}
+
+.author-info-group {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.author-avatar-circle {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.author-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.author-name {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dark-text);
+}
+
+.post-date {
+  font-size: 0.9rem;
+  color: var(--mid-grey);
+}
+
+/* --- Post Content & Likes (Styles remain the same) --- */
+.post-content {
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: #333;
+  padding-bottom: 2rem;
+}
+
+.post-content p {
+  margin-bottom: 1.5rem;
+}
+
+.post-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.like-btn {
+  background: #fff;
+  border: 1px solid #ddd;
+  color: #333;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  filter: grayscale(100%);
+  opacity: 0.7;
+}
+
+.like-count {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--mid-grey);
+}
+
+.separator {
+  border: 0;
+  height: 1px;
+  background-color: #f0f0f0;
+  margin: 0 2rem;
+}
+
+
+/* --- 2. Comments Section --- */
+.comments-wrapper {
+  padding: 2rem;
+  background: #fff;
+}
+
+.comments-heading {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0 0 2rem 0;
+  border-bottom: 2px solid var(--primary-color);
+  padding-bottom: 5px;
+  display: inline-block;
+}
+
+/* Comment Form */
+.comment-form-container {
+  margin-bottom: 2rem;
+  background: var(--light-grey);
+  padding: 1rem;
+  border-radius: 8px;
+}
+
+.comment-form-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-form-container textarea {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  outline: none;
+  font-family: inherit;
+  background: #fff;
+  resize: vertical;
+  min-height: 80px;
+  box-sizing: border-box;
+}
+
+/* Buttons */
+.btn-primary,
+.btn-secondary,
+.btn-save,
+.btn-cancel {
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  text-transform: uppercase;
+}
+
+.comment-form-container button.btn-primary {
+  background: var(--primary-color);
+  color: #fff;
+  align-self: flex-end;
+  margin-top: 10px;
+}
+
+/* Comment Items */
+.comment-item {
+  display: flex;
+  gap: 12px;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px dashed #f0f0f0;
+}
+
+.comment-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #a0a0a0;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.comment-content {
+  flex: 1;
+}
+
+/* --- FIX: AUTHOR BADGE ORDER --- */
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 5px;
+}
+
+.comment-author-info {
+  /* Use flex-direction: row-reverse to move the span to the front of the name */
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.author-badge {
+  /* The Badge itself */
+  background: #ffc107;
+  color: var(--dark-text);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  /* Made it a bit bolder */
+  order: -1;
+  /* This pushes the badge to the START of the flex container! */
+  text-transform: uppercase;
+}
+
+.comment-author {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--dark-text);
+  order: 0;
+  /* Keep the name after the badge */
+}
+
+/* --- END FIX --- */
+
+.comment-text {
+  font-size: 1rem;
+  color: #333;
+  margin: 0.5rem 0 0 0;
+  line-height: 1.6;
+  white-space: pre-wrap;
+}
+
+.comment-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.comment-options-dropdown {
+  position: relative;
+  margin-left: auto;
+  flex-shrink: 0;
+  padding-right: 5px;
+}
+
+.btn-kebab {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--mid-grey);
+  padding: 0 5px;
+  line-height: 0.5;
+  transition: color 0.2s;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+}
+
+.btn-kebab:hover {
+  color: var(--dark-text);
+  background-color: #f0f0f0;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  z-index: 10;
+  min-width: 180px;
+  background-color: white;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
+  padding: 5px 0;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(5px);
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.dropdown-menu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.dropdown-item {
+  width: 100%;
+  text-align: left;
+  background: none;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  font-size: 0.95rem;
+  color: var(--dark-text);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.dropdown-item:hover {
+  background-color: var(--hover-bg);
+  color: var(--dark-text);
+}
+
+.delete-option {
+  color: var(--delete-color);
+  font-weight: 600;
+}
+
+.delete-option:hover {
+  background-color: #fef0f1;
+  color: var(--delete-color);
+}
+
+/* --- Comment Footer Metadata (Styles remain the same) --- */
+.comment-metadata {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pinned-status {
+  background: #000;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-right: 5px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-block;
+}
+
+.edited-status {
+  font-size: 12px;
+}
+
+/* --- NEW: Reply Link Button --- */
+.comment-actions .btn-reply-link {
+  background: none;
+  border: none;
+  color: var(--mid-grey);
+  /* Match the metadata/mid-grey style */
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: color 0.2s;
+  padding: 0 5px;
+  margin-left: 10px;
+  /* Separator from like count */
+}
+
+.comment-actions .btn-reply-link:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+
+/* --- NEW: Reply Form Styles (Indented Look) --- */
+.reply-form-container {
+  margin-top: 15px;
+  padding: 10px 15px;
+  background-color: #fcfcfc;
+  /* Very light background for slight indentation */
+  border: 1px solid #f0f0f0;
+  border-radius: 6px;
+}
+
+.reply-form-container textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  resize: vertical;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+.reply-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* Small Button Style for Reply Form */
+.btn-primary-small {
+  padding: 6px 15px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: background-color 0.2s;
+  text-transform: uppercase;
+}
+
+.btn-primary-small:hover:not(:disabled) {
+  background-color: #333;
+}
+
+.btn-primary-small:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* --- NEW: Styling for Threaded Replies (Indentation) --- */
+
+/* --- Threading/Indentation for Replies --- */
+.replies-wrapper {
+  /* Replies ඇතුළට තල්ලු කිරීම */
+  padding-left: 50px;
+  margin-top: 15px;
+  /* Vertical line එක පෙන්වීම */
+  border-left: 2px solid #f0f0f0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.replies-wrapper .comment-item {
+  border-bottom: none;
+  padding-bottom: 0;
+  padding-top: 10px;
+  /* Reply එක Avatar එකට යටින් align කිරීමට */
+  margin-left: -50px;
+  width: calc(100% + 50px);
+}
+
+.view-replies-toggler {
+  margin-top: 15px;
+  margin-bottom: 5px;
+  padding-top: 5px;
+}
+
+.btn-toggle-replies {
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  /* Primary color for visibility */
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 5px 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.2s;
+}
+
+.btn-toggle-replies:hover {
+  text-decoration: underline;
+  color: var(--dark-text);
+}
+
+.icon-down,
+.icon-up {
+  font-size: 1.1em;
+  font-weight: 900;
+  /* Bolder arrow */
+}
+
+/* post-detail.component.css */
+
+.author-avatar,
+.comment-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    overflow: hidden; /* Image එක රවුමෙන් එළියට පැනීම වළක්වන්න */
+    background-color: #ccc; /* Image එක load වෙනකම් හෝ නැතිනම් පෙන්වන්න */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: #555;
+    flex-shrink: 0; /* Avatar එක shrink වීම වළක්වන්න */
+}
+
+.avatar-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Image එක රවුමට හරියටම set වෙන්න */
+}

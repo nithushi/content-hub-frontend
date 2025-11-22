@@ -1,0 +1,73 @@
+<header class="main-header">
+  <nav class="navbar-content">
+
+    <a class="nav-brand" routerLink="/">
+      <span class="brand-icon">✦</span>
+      <span class="brand-text">Content Hub</span>
+    </a>
+
+    <ul class="nav-links">
+      <li>
+        <a class="nav-link" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+          <span class="link-text">Home</span>
+          <span class="link-underline"></span>
+        </a>
+      </li>
+
+      <ng-container *ngIf="!(isLoggedIn$ | async)">
+        <li>
+          <a class="nav-link" routerLink="/login" routerLinkActive="active">
+            <span class="link-text">Login</span>
+            <span class="link-underline"></span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-button" routerLink="/register">
+            <span class="button-bg"></span>
+            <span class="button-text">Get Started</span>
+          </a>
+        </li>
+      </ng-container>
+
+      <li *ngIf="(isLoggedIn$ | async) && currentUser" class="profile-menu-container">
+
+        <!-- <button class="profile-avatar-btn" (click)="toggleProfileMenu()">
+          <div class="avatar-circle">
+            </div>
+        </button> -->
+
+        <button class="profile-avatar-btn" (click)="toggleProfileMenu()">
+          <div class="avatar-circle" *ngIf="!currentUser?.profileImageUrl">
+            <!-- <span>{{ (currentUser?.name ? currentUser.name[0] : '') }}</span> -->
+          </div>
+          <img class="avatar-circle" *ngIf="currentUser?.profileImageUrl"
+            [src]="'http://localhost:8080' + currentUser.profileImageUrl" alt="Profile Pic">
+        </button>
+
+        <div class="profile-dropdown" *ngIf="isProfileMenuOpen">
+
+          <div class="dropdown-header">
+            <p class="dropdown-username">{{ currentUser.name }}</p>
+            <p class="dropdown-email">{{ currentUser.email }}</p>
+          </div>
+
+          <div class="dropdown-divider"></div>
+
+          <ul class="dropdown-links">
+            <li>
+              <a routerLink="/profile" (click)="toggleProfileMenu()">
+                View Profile
+              </a>
+            </li>
+            <li>
+              <button (click)="onLogout()">
+                Logout
+              </button>
+            </li>
+          </ul>
+        </div>
+      </li>
+
+    </ul>
+  </nav>
+</header>

@@ -1,0 +1,102 @@
+<div class="profile-wrapper-pro">
+
+  <!-- <aside class="profile-sidebar">
+    <div class="sidebar-sticky-content" *ngIf="user">
+
+      <div class="profile-avatar-large">
+        <span>{{ getInitials(user.firstName, user.lastName) }}</span>
+      </div>
+
+      <h1 class="profile-name">{{ user.firstName }} {{ user.lastName }}</h1>
+      <p class="profile-email">{{ user.email }}</p>
+
+      <a routerLink="/profile/edit" class="edit-profile-btn">Edit Profile</a>
+
+      <div class="profile-stats">
+        <div class="stat-item">
+          <span class="stat-count">{{ posts.length }}</span>
+          <span class="stat-label">Total Posts</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-count">{{ user.commentCount }}</span>
+          <span class="stat-label">Comments</span>
+        </div>
+      </div>
+
+    </div>
+  </aside> -->
+
+  <aside class="profile-sidebar">
+    <div class="sidebar-sticky-content" *ngIf="currentUser">
+
+      <div class="profile-avatar-large">
+        <img *ngIf="currentUser.profileImageUrl" [src]="'http://localhost:8080' + currentUser.profileImageUrl"
+          alt="Profile Picture">
+        <span *ngIf="!currentUser.profileImageUrl">
+          {{ getInitials(currentUser.name) }}
+        </span>
+      </div>
+
+      <h1 class="profile-name">{{ currentUser.name }}</h1>
+      <p class="profile-email">{{ currentUser.email }}</p>
+
+      <a routerLink="/profile/edit" class="edit-profile-btn">Edit Profile</a>
+
+      <div class="profile-stats">
+        <div class="stat-item">
+          <span class="stat-count">{{ posts.length }}</span>
+          <span class="stat-label">Total Posts</span>
+        </div>
+        <!-- <div class="stat-item">
+          <span class="stat-count">{{ currentUser.commentCount || 0 }}</span>
+          <span class="stat-label">Comments</span>
+        </div> -->
+      </div>
+
+    </div>
+  </aside>
+
+  <main class="profile-main-content">
+    <div class="posts-section">
+      <h2>My Posts</h2>
+
+      <div class="no-posts" *ngIf="posts.length === 0">
+        <p>You haven't written any posts yet.</p>
+        <a routerLink="/create-post" class="create-post-btn">Write your first post</a>
+      </div>
+
+      <div class="post-grid" *ngIf="posts.length > 0">
+
+        <div class="post-card" *ngFor="let post of posts" [class.no-image]="!post.featuredImageUrl">
+
+          <div class="post-options-container">
+            <button class="btn-icon more-options-btn" (click)="togglePostMenu(post.id)">
+              ...
+            </button>
+
+            <div class="options-menu" *ngIf="openPostMenuId === post.id">
+              <a [routerLink]="['/post/edit', post.id]" (click)="togglePostMenu(post.id)">
+                Edit Post
+              </a>
+              <!-- <a routerLink="/profile/edit" class="edit-profile-btn">Edit Profile</a> -->
+              <button class="delete-option" (click)="onDeletePost(post.id); togglePostMenu(post.id)">
+                Delete Post
+              </button>
+            </div>
+          </div>
+          <a class="post-card-image" [routerLink]="['/post', post.id]" *ngIf="post.featuredImageUrl">
+            <img [src]="'http://localhost:8080' + post.featuredImageUrl" alt="Post Image">
+          </a>
+
+          <div class="post-card-content">
+            <span class="post-date">{{ post.createdAt | date: 'mediumDate' }}</span>
+            <h3 class="post-title">
+              <a [routerLink]="['/post', post.id]">{{ post.title }}</a>
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</div>

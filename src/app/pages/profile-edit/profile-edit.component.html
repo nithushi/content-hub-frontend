@@ -1,0 +1,106 @@
+<!-- <div class="edit-profile-wrapper">
+  <div class="form-card">
+    <h1>Edit Profile</h1>
+    <p class="lead">Update your personal information and settings.</p>
+
+    <form [formGroup]="editProfileForm" (ngSubmit)="onSubmit()">
+
+      <div class="form-section-group">
+        <h3>Personal Info</h3>
+
+        <div class="row">
+          <div class="form-group">
+            <label for="firstName">First Name *</label>
+            <input id="firstName" type="text" formControlName="firstName">
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name *</label>
+            <input id="lastName" type="text" formControlName="lastName">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="contact">Contact Number</label>
+          <input id="contact" type="tel" formControlName="contact">
+        </div>
+      </div>
+
+      <div class="form-section-group">
+        <h3>Account Access</h3>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input id="email" type="email" formControlName="email" readonly> 
+        </div>
+
+        </div>
+
+      <div class="form-actions">
+        <a routerLink="/profile" class="btn-cancel">Cancel</a>
+        <button type="submit" class="btn-save" [disabled]="editProfileForm.invalid || isSubmitting">
+          {{ isSubmitting ? 'Saving...' : 'Save Changes' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div> -->
+
+
+<div class="edit-profile-wrapper">
+  <div class="form-card">
+    <h1>Edit Profile</h1>
+    <p class="lead">Update your personal information and settings.</p>
+
+    <form [formGroup]="editProfileForm" (ngSubmit)="onSubmit()">
+
+      <div class="profile-image-upload">
+        <div class="image-preview" [style.background-image]="previewImageUrl ? 'url(' + previewImageUrl + ')' : 'none'">
+        </div>
+        <input type="file" id="profileImage" (change)="onFileSelected($event)" accept="image/*" style="display: none;">
+        <label for="profileImage" class="btn-upload-image">Upload Image</label>
+        <button *ngIf="previewImageUrl" class="btn-remove-image" (click)="removeImage()">Remove Image</button>
+      </div>
+      <div class="form-section-group">
+        <h3>Personal Info</h3>
+
+        <div class="row">
+          <div class="form-group">
+            <label for="firstName">First Name *</label>
+            <input id="firstName" type="text" formControlName="firstName">
+            <div *ngIf="editProfileForm.get('firstName')?.invalid && editProfileForm.get('firstName')?.touched"
+              class="error-message">
+              First Name is required.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name *</label>
+            <input id="lastName" type="text" formControlName="lastName">
+            <div *ngIf="editProfileForm.get('lastName')?.invalid && editProfileForm.get('lastName')?.touched"
+              class="error-message">
+              Last Name is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="contact">Contact Number</label>
+          <input id="contact" type="tel" formControlName="contact">
+        </div>
+      </div>
+
+      <div class="form-section-group">
+        <h3>Account Access</h3>
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input id="email" type="email" formControlName="email" readonly>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <a routerLink="/profile" class="btn-cancel">Cancel</a>
+        <button type="submit" class="btn-save" [disabled]="editProfileForm.invalid || isSubmitting">
+          {{ isSubmitting ? 'Saving...' : 'Save Changes' }}
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

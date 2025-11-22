@@ -1,0 +1,141 @@
+/* src/app/pages/login/login.component.css */
+
+.login-container {
+  display: flex;
+  width: 100%;
+  min-height: calc(100vh - 60px); /* 60px = header height */
+}
+
+/* 1. Form Panel Styles */
+.form-panel {
+  flex: 1; /* 50% width */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background-color: #ffffff;
+}
+
+.form-content {
+  width: 100%;
+  max-width: 380px;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 10px;
+}
+
+.lead {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 30px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+input {
+  width: 100%;
+  padding: 12px 15px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  outline: none;
+  font-size: 1rem;
+  background: #f9f9f9;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+
+input:focus {
+  border-color: #333;
+  background-color: #fff;
+}
+
+/* Password Toggle */
+.pw-wrap {
+  position: relative;
+}
+
+.pw-toggle {
+  position: absolute;
+  right: 15px;
+  top: 41px; /* Input එක ඇතුළේ align වෙන්න */
+  border: none;
+  background: none;
+  color: #777;
+  font-size: 0.8rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Button */
+.submit-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 10px;
+  background: #000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submit-btn:hover {
+  background: #333;
+}
+
+/* Switch Form Link */
+.switch-form {
+  margin-top: 20px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.switch-form a {
+  color: #000;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+/* 2. Image Panel Styles */
+.image-panel {
+  flex: 1; /* 50% width */
+  background-color: #f4f4f4; /* Fallback */
+  background-size: cover;
+  background-position: center;
+  /* Hide on small screens */
+  display: none; 
+}
+
+/* Show image panel only on larger screens */
+@media (min-width: 768px) {
+  .form-panel {
+    flex: 0 0 50%; /* Fix width */
+  }
+  .image-panel {
+    display: block; /* Show panel */
+    flex: 1;
+  }
+}
+
+/* For even larger screens, reduce form panel width */
+@media (min-width: 1024px) {
+  .form-panel {
+    flex: 0 0 40%;
+  }
+}

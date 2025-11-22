@@ -1,0 +1,437 @@
+/* src/app/pages/profile/profile.component.css */
+
+/* --- 1. NEW: Professional Two-Column Layout --- */
+.profile-wrapper-pro {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 0 2rem;
+  display: grid;
+  /* Grid with a sidebar (280px) and main content (1fr) */
+  grid-template-columns: 280px 1fr;
+  gap: 3rem;
+}
+
+/* --- 2. NEW: Left Sidebar Styles --- */
+.profile-sidebar {
+  /* This makes the sidebar content sticky */
+  position: relative;
+}
+
+.sidebar-sticky-content {
+  position: sticky;
+  top: 80px; /* 60px main header + 20px padding */
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center avatar and text */
+  text-align: center;
+  padding: 2rem;
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+}
+
+/* .profile-avatar-large {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #111;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+} */
+
+.profile-avatar-large img {
+    /* Image එක parent div එකේ ප්‍රමාණයටම පිරෙන්න ඕන */
+    width: 100%; 
+    height: 100%;
+    /* Image එක රවුමට හරවන්න */
+    border-radius: 100%; 
+    /* Image එක parent box එකට cover වෙන්න */
+    object-fit: cover; 
+    /* Box-shadow එක parent එකෙන් එන නිසා මේක අවශ්‍ය නෑ */
+}
+
+.profile-name {
+  margin: 0 0 5px 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #111;
+}
+
+.profile-email {
+  margin: 0 0 1.5rem 0;
+  font-size: 1rem;
+  color: #777;
+}
+
+.edit-profile-btn {
+  width: 100%;
+  display: block;
+  background: #f0f0f0;
+  color: #333;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.edit-profile-btn:hover {
+  background: #e0e0e0;
+}
+
+.profile-stats {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #f0f0f0; 
+}
+
+.stat-item {
+  text-align: center;
+}
+
+.stat-item .stat-count {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #111;
+  display: block;
+}
+
+.stat-item .stat-label {
+  font-size: 0.8rem;
+  color: #777;
+  text-transform: uppercase;
+}
+
+/* --- 3. Main Content (Post Feed) Styles --- */
+.posts-section h2 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+/* No Posts */
+.no-posts {
+  text-align: center;
+  padding: 3rem;
+  background: #f9f9f9;
+  border: 1px dashed #ddd;
+  border-radius: 12px;
+}
+.no-posts p {
+  font-size: 1.1rem;
+  color: #555;
+  margin: 0 0 1.5rem 0;
+}
+.create-post-btn {
+  background: #000;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+/* Post Grid */
+.post-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.post-card {
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+  overflow: hidden;
+  transition: all 0.3s ease-out;
+}
+
+.post-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.07);
+  border-color: #ddd;
+}
+
+.post-card-image {
+  display: block;
+  height: 200px;
+  background: #f5f5f5;
+  border-bottom: 1px solid #eee;
+}
+
+.post-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease-out;
+}
+
+.post-card:hover .post-card-image img {
+  transform: scale(1.05);
+}
+
+.image-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: #ccc;
+}
+
+.post-card-content {
+  padding: 1.5rem;
+}
+
+.post-date {
+  font-size: 0.85rem;
+  color: #777;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.post-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.post-title a {
+  color: #111;
+  text-decoration: none;
+}
+
+.post-title a:hover {
+  text-decoration: underline;
+}
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+  .profile-wrapper-pro {
+    /* Stack layout on smaller screens */
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .profile-sidebar {
+    /* Un-stick the sidebar */
+    position: static;
+  }
+  .sidebar-sticky-content {
+    /* Make sidebar horizontal and centered */
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+  }
+  .profile-avatar-large {
+    width: 80px;
+    height: 80px;
+    font-size: 2rem;
+    margin-bottom: 0;
+  }
+  .profile-name { font-size: 1.5rem; }
+  .profile-email { margin-bottom: 0; }
+  .profile-stats {
+    flex-direction: column;
+    margin-top: 0;
+    padding-top: 0;
+    border-top: none;
+    margin-left: auto; /* Push stats to the right */
+    padding-left: 1.5rem;
+    border-left: 1px solid #f0f0f0;
+    text-align: center;
+  }
+  .edit-profile-btn {
+    display: none; /* Hide button on this layout */
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar-sticky-content {
+    /* Stack again on small mobile */
+    flex-direction: column;
+    text-align: center;
+  }
+  .profile-stats {
+    flex-direction: row;
+    margin-top: 1.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #f0f0f0;
+    margin-left: 0;
+    padding-left: 0;
+    border-left: none;
+  }
+  .edit-profile-btn {
+    display: block; /* Show button again */
+    margin: 1.5rem 0 0 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .post-grid {
+    grid-template-columns: 1fr; /* 1 column on small screens */
+  }
+}
+
+
+/* src/app/pages/profile/profile.component.css */
+
+/* ... (Existing .post-grid, .post-card, .post-card-image styles) ... */
+
+/* --- 3. THE FIX: No Image Class --- */
+
+.post-card.no-image {
+  /* No Image, so switch to a simple column layout */
+  flex-direction: column; 
+}
+
+.post-card.no-image .post-card-content {
+  /* Content takes full 100% of the available width */
+  flex-basis: 100%;
+}
+
+.post-card.no-image .post-card-image {
+  /* This ensures the image link is not rendered/takes space */
+  display: none; 
+}
+
+/* --- Responsive (If you want full-width on mobile too) --- */
+@media (max-width: 768px) {
+  .post-grid {
+    /* 2 columns on tablet */
+    grid-template-columns: 1fr 1fr; 
+  }
+  
+  .post-card.no-image {
+    /* On mobile, if no image, the card remains a column but looks cleaner */
+    flex-direction: column;
+  }
+  
+  .post-card-image {
+    /* Default image height for two-column grid */
+    height: 150px; 
+  }
+}
+
+/* src/app/pages/profile/profile.component.css */
+
+/* ... (Your existing post-card styles) ... */
+
+/* --- NEW: Post Options Dropdown Styles --- */
+
+.post-card {
+  position: relative; /* Dropdown එක හරියට තියෙන්න */
+}
+
+.post-options-container {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 10; /* Button එක උඩින්ම තියෙන්න */
+}
+
+.more-options-btn {
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  color: #777;
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 0;
+  padding: 0;
+}
+.more-options-btn:hover {
+  background: #f0f0f0;
+  color: #333;
+}
+
+/* Dropdown Menu Box */
+.options-menu {
+  position: absolute;
+  top: 35px; /* Button එකට යටින් තියෙන්න */
+  right: 0;
+  width: 180px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  padding: 5px 0;
+  z-index: 20;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.options-menu a,
+.options-menu button {
+  display: block;
+  width: 100%;
+  padding: 8px 12px;
+  text-align: left;
+  background: none;
+  border: none;
+  font-size: 0.9rem;
+  color: #333;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.1s;
+}
+
+.options-menu a:hover,
+.options-menu button:hover {
+  background: #f0f0f0;
+}
+
+.options-menu .delete-option {
+  color: #e53935; /* Red color for delete */
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* src/app/pages/profile-edit/profile-edit.component.css */
+
+.image-preview {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  
+  /* FIX 1: Default background color (when no image is present) */
+  background-color: #f0f0f0; 
+  
+  /* FIX 2: Image එක රවුම ඇතුළේ පිරී පෙන්වීමට */
+  background-size: cover; 
+  background-position: center; 
+  
+  margin: 0 auto 1rem auto;
+  border: 3px solid #eee;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  
+  /* Initials Center (මෙහිදී initials නැතත්, මම පෙර පියවරේදී දුන් code වලට අවශ්‍යයි) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.5rem;
+  color: #aaa;
+  overflow: hidden; /* රවුමෙන් එළියට යන parts කපා ඉවත් කරයි */
+}

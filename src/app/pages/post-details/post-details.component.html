@@ -1,0 +1,156 @@
+<div class="post-detail-wrapper" *ngIf="post">
+
+    <header class="post-image-header" *ngIf="post.featuredImageUrl">
+        <img class="featured-image" [src]="'http://localhost:8080' + post.featuredImageUrl" alt="Post Image">
+    </header>
+
+    <article class="post-article">
+        <h1 class="post-title">{{ post.title }}</h1>
+        <div class="post-meta-strip">
+            <div class="author-info-group">
+                <div class="author-avatar">
+                    <img *ngIf="post.authorProfileImageUrl" 
+                         [src]="'http://localhost:8080' + post.authorProfileImageUrl" 
+                         alt="Author Avatar" class="avatar-img">
+                    <span *ngIf="!post.authorProfileImageUrl">
+                        {{ (post.authorFirstName ? post.authorFirstName[0] : '') + (post.authorLastName ? post.authorLastName[0] : '') }}
+                    </span>
+                </div>
+
+                <div class="author-details">
+                    <span class="author-name">{{ post.authorFirstName }} {{ post.authorLastName }}</span>
+                    <span class="post-date">{{ post.createdAt | date: 'fullDate' }}</span>
+                </div>
+            </div>
+            <div class="post-actions" *ngIf="isLoggedIn$ | async">
+                <button class="like-btn" [class.liked]="post.likedByCurrentUser" (click)="toggleLike()">
+                    <span class="icon-heart">❤</span>
+                </button>
+                <span class="like-count" *ngIf="post.likeCount > 0">{{ post.likeCount }}</span>
+            </div>
+        </div>
+        <div class="post-content">
+            <p [innerHTML]="post.content"></p>
+        </div>
+    </article>
+
+    <hr class="separator">
+
+    <div class="comments-wrapper">
+        <h2 class="comments-heading">Comments ({{ comments.length }})</h2>
+
+        <div class="comment-form-container" *ngIf="isLoggedIn$ | async">
+            <form [formGroup]="commentForm" (ngSubmit)="onCommentSubmit()">
+                <textarea formControlName="content" rows="3" placeholder="Write a comment..."></textarea>
+                <button type="submit" [disabled]="commentForm.invalid">Post Comment</button>
+            </form>
+        </div>
+
+        <div class="comments-list">
+            <div class="no-comments-state" *ngIf="comments.length === 0">
+                <p>Be the first to comment on this post.</p>
+            </div>
+
+            <ng-container *ngFor="let comment of comments">
+                <div class="comment-item" *ngIf="editingCommentId === comment.id">
+                    <form class="comment-edit-form" [formGroup]="editForm" (ngSaveEdit)="onSaveEdit(comment.id)">
+                        <textarea formControlName="content" rows="3"></textarea>
+                        <div class="edit-actions">
+                            <button type="button" class="btn-secondary" (click)="cancelEdit()">Cancel</button>
+                            <button type="submit" class="btn-primary" [disabled]="editForm.invalid">Save Changes</button>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="comment-item" *ngIf="editingCommentId !== comment.id">
+                    <ng-container [ngTemplateOutlet]="viewCommentTemplate"
+                        [ngTemplateOutletContext]="{ c: comment }"></ng-container>
+                </div>
+            </ng-container>
+
+            <ng-template #viewCommentTemplate let-c="c">
+                <div class="comment-avatar">
+                     <img *ngIf="c.authorProfileImageUrl" 
+                          [src]="'http://localhost:8080' + c.authorProfileImageUrl" 
+                          alt="User Avatar" class="avatar-img">
+                    <span *ngIf="!c.authorProfileImageUrl">
+                        {{ (c.authorFirstName ? c.authorFirstName[0] : '') + (c.authorLastName ? c.authorLastName[0] : '') }}
+                    </span>
+                </div>
+
+                <div class="comment-content">
+                    <div class="comment-header">
+                        <div class="comment-author-info">
+                            <span class="author-badge" *ngIf="c.authorId === post.authorId">Author</span>
+                            <span class="comment-author">{{ c.authorFirstName }} {{ c.authorLastName }}</span>
+                        </div>
+
+                        <div class="comment-options-dropdown" *ngIf="isLoggedIn$ | async">
+                            <button class="btn-kebab" (click)="toggleDropdown(c.id)">•••</button>
+                            <div class="dropdown-menu" [class.show]="isDropdownOpen(c.id)">
+                                <button class="dropdown-item" *ngIf="currentUserId === post.authorId"
+                                    (click)="toggleCommentPin(c); toggleDropdown(c.id)">
+                                    <span class="icon-pin">{{ c.isPinned ? '📌 Unpin' : 'Pin' }}</span>
+                                </button>
+                                <button class="dropdown-item" *ngIf="currentUserId === c.authorId"
+                                    (click)="onEditComment(c); toggleDropdown(c.id)">
+                                    <span class="icon-edit">Edit</span>
+                                </button>
+                                <button class="dropdown-item delete-option" *ngIf="currentUserId === c.authorId"
+                                    (click)="onDeleteComment(c.id); toggleDropdown(c.id)">
+                                    <span class="icon-delete">Delete</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="comment-text">{{ c.content }}</p>
+
+                    <div class="comment-footer">
+                        <div class="comment-metadata">
+                            <span class="pinned-status" *ngIf="c.isPinned">📌 Pinned</span>
+                            <span class="comment-date">{{ c.createdAt | date: 'mediumDate' }}</span>
+                            <span class="edited-status" *ngIf="c.isEdited">(Edited)</span>
+                        </div>
+
+                        <div class="comment-actions" *ngIf="isLoggedIn$ | async">
+                            <button class="comment-like-btn" [class.liked]="c.likedByCurrentUser"
+                                (click)="toggleCommentLike(c)">❤</button>
+                            <span class="comment-like-count" *ngIf="c.likeCount > 0">{{ c.likeCount }}</span>
+                            <button class="btn-reply-link" (click)="toggleReplyForm(c.id)">Reply</button>
+                        </div>
+                    </div>
+
+                    <div class="reply-form-container" *ngIf="(isLoggedIn$ | async) && replyingToCommentId === c.id">
+                        <form [formGroup]="replyForm" (ngSubmit)="onReplySubmit(c.id)">
+                            <textarea formControlName="content" rows="2" placeholder="Write your reply..."></textarea>
+                            <div class="reply-actions">
+                                <button type="button" class="btn-secondary" (click)="toggleReplyForm(c.id)">Cancel</button>
+                                <button type="submit" [disabled]="replyForm.invalid" class="btn-primary-small">Post Reply</button>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="view-replies-toggler" *ngIf="c.replies && c.replies.length > 0">
+                        <button class="btn-toggle-replies" (click)="toggleReplies(c.id)">
+                            <ng-container *ngIf="isRepliesExpanded(c.id); else viewReplies">
+                                <span class="icon-up">^</span> Hide {{ c.replies.length }} Replies
+                            </ng-container>
+                            <ng-template #viewReplies>
+                                <span class="icon-down">v</span> View {{ c.replies.length }} Replies
+                            </ng-template>
+                        </button>
+                    </div>
+
+                    <div class="replies-wrapper" *ngIf="c.replies && c.replies.length > 0 && isRepliesExpanded(c.id)">
+                        <div class="comment-item reply-item" *ngFor="let reply of c.replies">
+                            <ng-container [ngTemplateOutlet]="viewCommentTemplate" 
+                                          [ngTemplateOutletContext]="{ c: reply }">
+                            </ng-container>
+                        </div>
+                    </div>
+
+                </div>
+            </ng-template> </div>
+    </div>
+</div>

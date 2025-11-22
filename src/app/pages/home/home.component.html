@@ -1,0 +1,74 @@
+<div class="home-wrapper">
+
+  <div class="home-header">
+    <div class="header-logo">
+      <span class="logo-icon">C</span>
+    </div>
+    <div class="header-title">
+      <h2>Social Content Platform</h2>
+      <p>Fresh writing • Creative thoughts</p>
+    </div>
+    <div class="header-search">
+      <span class="search-icon">⚲</span>
+      <input type="text" placeholder="Search articles, tags...">
+    </div>
+    <div class="header-action">
+      <button class="subscribe-btn">Subscribe</button>
+    </div>
+  </div>
+
+  <div class="create-post-prompt" *ngIf="(isLoggedIn$ | async) && currentUser">
+    <div class="author-avatar">
+        <img *ngIf="currentUser.profileImageUrl" 
+             [src]="'http://localhost:8080' + currentUser.profileImageUrl" alt="PFP">
+        <!-- <span *ngIf="!currentUser.profileImageUrl">
+            {{ (currentUser.name?.split(' ')[0][0] || '') + (currentUser.name?.split(' ')[1][0] || '') }}
+        </span> -->
+    </div>
+    <a class="prompt-link" routerLink="/create-post">
+        What's on your mind? Start writing...
+    </a>
+  </div>
+
+  <div class="post-feed">
+    <div class="social-post-card" *ngFor="let post of posts">
+        
+        <div class="post-feed-header">
+            <div class="author-avatar">
+                <img *ngIf="post.authorProfileImageUrl" 
+                     [src]="'http://localhost:8080' + post.authorProfileImageUrl" alt="Author PFP">
+                <span *ngIf="!post.authorProfileImageUrl">
+                  {{ post.authorFirstName[0] }}{{ post.authorLastName[0] }}
+                </span>
+            </div>
+            
+            <div class="author-details">
+                <a class="author-name" [routerLink]="['/user', post.authorId]">{{ post.authorFirstName }} {{ post.authorLastName }}</a>
+                <span class="post-date">
+                    <span class="dot">•</span> {{ post.createdAt | date: 'MMMM dd, y' }}
+                </span>
+            </div>
+        </div>
+
+        <div class="post-feed-body">
+            <h2 class="post-title-feed">
+                <a [routerLink]="['/post', post.id]">{{ post.title }}</a>
+            </h2>
+            <p class="post-excerpt-feed" *ngIf="post.excerpt">{{ post.excerpt }}</p>
+
+            <a [routerLink]="['/post', post.id]" class="post-image-link-feed" *ngIf="post.featuredImageUrl">
+                <img [src]="'http://localhost:8080' + post.featuredImageUrl" alt="Post Image">
+            </a>
+        </div>
+        
+        <div class="post-feed-actions">
+            <div class="action-item">
+                 <span class="count">{{ post.likeCount || 0 }}</span> Likes 
+            </div>
+            <div class="action-item">
+                 <span class="count">{{ post.commentCount || 0 }}</span> Comments 
+            </div>
+        </div>
+    </div>
+  </div>
+</div>

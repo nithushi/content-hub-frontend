@@ -1,0 +1,34 @@
+<div class="login-container">
+  
+  <div class="form-panel">
+    <div class="form-content">
+      <h2>Welcome Back</h2>
+      <p class="lead">Please enter your details to login.</p>
+
+      <form [formGroup]="loginForm" (ngSubmit)="onLoginSubmit()">
+        
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="you@example.com" formControlName="email">
+        </div>
+
+        <div class="form-group pw-wrap">
+          <label for="password">Password</label>
+          <input id="password" [type]="showPassword ? 'text' : 'password'" placeholder="Enter your password" formControlName="password">
+          <button type="button" class="pw-toggle" (click)="togglePassword()">
+            {{ showPassword ? 'Hide' : 'Show' }}
+          </button>
+        </div>
+
+        <button type="submit" class="submit-btn" [disabled]="loginForm.invalid">Login</button>
+
+        <div class="switch-form">
+          Don't have an account? <a routerLink="/register">Sign Up</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="image-panel">
+    </div>
+</div>

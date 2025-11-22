@@ -1,0 +1,50 @@
+<div class="register-container">
+  <div class="form-panel">
+    <div class="form-content">
+      <h2>Create an Account</h2>
+      <p class="lead">Join our community to write and connect.</p>
+
+      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        
+        <div class="row">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input id="firstName" type="text" placeholder="Your first name" formControlName="firstName">
+          </div>
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input id="lastName" type="text" placeholder="Your last name" formControlName="lastName">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email" type="email" placeholder="you@example.com" formControlName="email">
+        </div>
+        
+        <div class="form-group">
+          <label for="contact">Contact (Optional)</label>
+          <input id="contact" type="tel" placeholder="+94 7xx xxxxx" formControlName="contact">
+        </div>
+
+        <div class="form-group pw-wrap">
+          <label for="password">Password</label>
+          <input id="password" [type]="showPassword ? 'text' : 'password'" placeholder="Create a strong password" formControlName="password">
+          
+          <button type="button" class="pw-toggle" (click)="togglePassword()">
+            {{ showPassword ? 'Hide' : 'Show' }}
+          </button>
+        </div>
+
+        <button type="submit" class="submit-btn" [disabled]="registerForm.invalid">
+          Create Account
+        </button>
+
+        <div class="switch-form">
+          Already have an account? <a routerLink="/login">Login</a>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="image-panel"></div>
+</div>
